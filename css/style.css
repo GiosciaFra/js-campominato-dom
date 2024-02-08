@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+#grid {
+    width: 100vw;
+}
+
+
+
+.square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 10%;
+
+    border: 1px solid black;
+
+    cursor: pointer;
+    aspect-ratio: 1 / 1;
+}
+
+.square.medium {
+    width: calc(100% / 9);
+}
+
+.square.hard {
+    width: calc(100% / 7);
+
+}
+
+
+.square.active {
+    background-color: rgb(103, 164, 255);
+}
+
+
+
+/* media query */
+@media screen and (min-width: 768px) {
+    
+    #grid {
+        width: 60%;
+    }
+}
+
+@media screen and (min-width:992px) {
+ 
+    #grid {
+        width: 40%;
+    }
+}
