@@ -102,7 +102,7 @@ playButton.addEventListener('click', function () {
 
                 alert('Hai cliccato su una bomba! Game Over.');
 
-                resetGame();
+            
             }
 
         });
@@ -140,8 +140,6 @@ function generateBombPositions(changeLevel) {
     return bombPositions;
 }
 
-function resetGame() {
 
-}
 
 
