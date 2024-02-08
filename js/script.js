@@ -2,7 +2,7 @@
 // se invece abbiamo scelto difficile l'array dovrà contenerne da 1 a 49): questi rappreseranno le posizioni delle nostre bombe :bomba:.
 // Attenzione: nella stessa cella può essere posizionata al massimo una bomba, perciò nell’array delle bombe non potranno esserci due numeri uguali.
 // In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina. 
-//Altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
+// Altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
 // La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti (ovvero quando ha rivelato tutte le celle che non sono bombe).
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
 // BONUS 1
@@ -100,13 +100,28 @@ playButton.addEventListener('click', function () {
 
             if (bombPositions.includes(boxIndex)) {
 
+                // Se la cella contiene una bomba, termina il gioco
+                 this.style.backgroundColor = 'red';
                 alert('Hai cliccato su una bomba! Game Over.');
+            
+            } else {
+                // Altrimenti, la cella cliccata si colora di azzurro
+                this.style.backgroundColor = 'blue';
+                this.classList.add('active'); 
 
             
-            }
 
-        });
+                 // Verifica se tutte le celle non bombe sono state rivelate
+        const nonBombCells = gridLevel - bombPositions.length;
+        const revealedCells = document.querySelectorAll('.square.active').length;
 
+
+        if (revealedCells === nonBombCells) {
+            // Se tutte le celle non bombe sono state rivelate, il giocatore ha vinto
+            alert('Hai vinto! Punteggio: ' + revealedCells);
+            
+        }
+    }});
         gridElement.append(newBox);
     }
 });
@@ -139,6 +154,9 @@ function generateBombPositions(changeLevel) {
 
     return bombPositions;
 }
+
+
+
 
 
 
